@@ -1,15 +1,15 @@
 # PHP-CSRF-Token
 PHP CSRF Token (Class + Session)
 
-# configure
-$session_var_name = 'csrf_token';
-$session_timeout = 1800;
-$session_time_extend = 600;
-$session_secret = 'SecretSpecific2k21!';
+# Configure Class
+$session_var_name = 'csrf_token';<br>
+$session_timeout = 1800;<br>
+$session_time_extend = 600;<br>
+$session_secret = 'SecretSpecific2k21!';<br>
 
-# include
+# Include to PHP page
 include "csrfToken.class.php";
 
-# examples
-$token = CsrfToken::getToken();
+# Examples
+$token = CsrfToken::getToken();<br>
 CsrfToken::checkToken($token);
