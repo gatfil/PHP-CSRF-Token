@@ -23,7 +23,7 @@ class CsrfToken{
    private static $session_var_name = 'csrf_token';
    private static $session_timeout = 1800;
    private static $session_time_extend = 600;
-   private static $session_secret = 'F4YoU2K21!';
+   private static $session_secret = 'SecretSpecific2k21!';
 
    function __construct($debug = false)
    {

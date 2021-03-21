@@ -39,7 +39,7 @@ var_dump(CsrfToken::checkToken($token, $param));
 echo '<br>';
 #endregion
 
-#region generic (per pagine generiche o dove non si vuole forzare il controllo specifico )
+#region generic 1 (per pagine generiche o dove non si vuole forzare il controllo specifico )
 $param = [
    'type' => null,
    'name' => null,
@@ -48,8 +48,16 @@ $param = [
 ];
 $token = CsrfToken::getToken($param); //PARAM non obbligatorio
 
-echo 'generic: ';
+echo 'generic 1: ';
 var_dump(CsrfToken::checkToken($token, $param)); //PARAM non obbligatorio
+echo '<br>';
+#endregion
+
+#region generic 2 senza paramentri (per pagine generiche o dove non si vuole forzare il controllo specifico )
+$token = CsrfToken::getToken();
+
+echo 'generic 2: ';
+var_dump(CsrfToken::checkToken($token));
 echo '<br>';
 #endregion
 
