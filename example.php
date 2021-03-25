@@ -14,7 +14,7 @@ echo "<pre>PRE: ".print_r($_SESSION['csrf_token'], true)."</pre>";
 $param = [
    'type' => 'otp',
    'name' => null,
-   'timeout' => 60,
+   'expire' => 60,
    'extend' => 0,
 ];
 $token = CsrfToken::getToken($param);
@@ -28,7 +28,7 @@ echo '<br>';
 $param = [
    'type' => 'otp',
    'name' => null,
-   'timeout' => 2,
+   'expire' => 2,
    'extend' => 0,
 ];
 $token = CsrfToken::getToken($param);
@@ -43,7 +43,7 @@ echo '<br>';
 $param = [
    'type' => null,
    'name' => null,
-   'timeout' => null,
+   'expire' => null,
    'extend' => null
 ];
 $token = CsrfToken::getToken($param); //PARAM non obbligatorio
@@ -65,7 +65,7 @@ echo '<br>';
 $param = [
    'type' => 'specific',
    'name' => 'form_login',
-   'timeout' => 600,
+   'expire' => 600,
    'extend' => 0
 ];
 $token = CsrfToken::getToken($param);
@@ -79,7 +79,7 @@ echo '<br>';
 $param = [
    'type' => 'specific',
    'name' => 'form_registrazione',
-   'timeout' => 600,
+   'expire' => 600,
    'extend' => 0,
    'destroy' => true
 ];

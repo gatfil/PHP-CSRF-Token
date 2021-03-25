@@ -13,7 +13,7 @@
  * $param = [
  *    type => [otp, generic, specific],
  *    name => nome richiesta,
- *    timeout => seconds,
+ *    expire => seconds,
  *    extend => seconds,
  *    destroy => [true, false]
  * ];
@@ -21,7 +21,7 @@
 
 class CsrfToken{
    private static $session_var_name = 'csrf_token';
-   private static $session_timeout = 1800;
+   private static $session_expire = 1800;
    private static $session_time_extend = 600;
    private static $session_secret = 'SecretSpecific2k21!';
 
@@ -44,7 +44,7 @@ class CsrfToken{
       $param = [
          'type' => $param['type'] ?? 'generic',
          'name' => $param['name'] ?? null,
-         'timeout' => $param['timeout'] ?? self::$session_timeout,
+         'expire' => $param['expire'] ?? self::$session_expire,
          'extend' => $param['extend'] ?? self::$session_time_extend,
          'destroy' => $param['destroy'] ?? false,
       ];
@@ -76,7 +76,7 @@ class CsrfToken{
                $token_id_f = uniqid('', true);
                $token = self::generateToken();
                $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['token'] = $token;
-               $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['expire'] = time() + $param['timeout'];
+               $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['expire'] = time() + $param['expire'];
                break;
             case 'generic':
                $token_id_f = self::findToken(null, $param);
@@ -90,7 +90,7 @@ class CsrfToken{
                   $token_id_f = uniqid('', true);
                   $token = self::generateToken();
                   $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['token'] = $token;
-                  $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['expire'] = time() + $param['timeout'];
+                  $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['expire'] = time() + $param['expire'];
                }
                break;
             case 'specific':
@@ -105,7 +105,7 @@ class CsrfToken{
                   $token_id_f = uniqid('', true);
                   $token = self::generateToken($param);
                   $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['token'] = $token;
-                  $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['expire'] = time() + $param['timeout'];
+                  $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['expire'] = time() + $param['expire'];
                   $_SESSION[self::$session_var_name][$param['type']][$token_id_f]['name'] = $param['name'];
                }
                break;
