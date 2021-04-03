@@ -130,7 +130,7 @@ class CsrfToken{
       {
          $token = 'EXPIRED';
       }
-      $return = '<input id="crsf-token" type="hidden" value="'.$token.'">';
+      $return = '<input id="csrf-token" type="hidden" value="'.$token.'">';
       return $return;
    }
 
