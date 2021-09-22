@@ -4,15 +4,15 @@
  *
  * @copyright  2021 gatfil
  * @license    
- * @version    Release: 0.1
- * @link       
+ * @version    Release: 0.2
+ * @link       https://github.com/gatfil/PHP-CSRF-Token
  * @since      Class available since Release 0.1
  */
 
 /**
  * $param = [
  *    type => [otp, generic, specific],
- *    name => nome richiesta,
+ *    name => nome richiesta (se type non definito e se specificato name trasforma type in specific),
  *    expire => seconds,
  *    extend => seconds,
  *    destroy => [true, false]
@@ -40,6 +40,12 @@ class CsrfToken{
    private static function setParams(&$param)
    {
       $fn = __FUNCTION__;
+
+      //FORZATURA Nel caso in cui non sia specificato il tipo, ma viene specificato il nome si trasforma in specific
+      if( !isset($param['type']) && isset($param['name']) && !empty($param['name']) )
+      {
+         $param['type'] = 'specific';
+      }
 
       $param = [
          'type' => $param['type'] ?? 'generic',
