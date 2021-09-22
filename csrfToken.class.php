@@ -225,7 +225,7 @@ class CsrfToken{
                }
 
                //SE è specificato il nome lo controllo
-               if( isset($param_['name']) && $token_s['name'] !== $param_['name'] )
+               if( isset($param_['name']) && isset($token_s['name']) && $token_s['name'] !== $param_['name'] )
                {
                   continue;
                }
